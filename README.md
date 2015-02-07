@@ -16,49 +16,9 @@ Download the script and place it in your environment path (how about `/usr/local
 
 This script doesn’t make much sense without some automation. The easiest way is to fire it from a [launchd](http://alvinalexander.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs) entry.
 
-1. Put the following lines (modify the starting times and and other settings to your flavour) into `~/Library/LaunchAgents/homebrew.update-notifier.plist`:
-
-    ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-    <dict>
-        <key>EnableGlobbing</key>
-        <false/>
-        <key>Label</key>
-        <string>homebrew.update-notifier</string>
-        <key>ProgramArguments</key>
-        <array>
-            <string>/bin/bash</string>
-            <string>/usr/local/bin/homebrew-update-notifier</string>
-        </array>
-        <key>StandardErrorPath</key>
-        <string>/usr/local/var/log/homebrew.update-notifier.log</string>
-        <key>StandardOutPath</key>
-        <string>/usr/local/var/log/homebrew.update-notifier.log</string>
-        <key>RunAtLoad</key>
-        <true/>
-        <key>StartCalendarInterval</key>
-        <array>
-            <dict>
-                <key>Hour</key>
-                <integer>10</integer>
-                <key>Minute</key>
-                <integer>0</integer>
-            </dict>
-            <dict>
-                <key>Hour</key>
-                <integer>15</integer>
-                <key>Minute</key>
-                <integer>0</integer>
-            </dict>
-        </array>
-    </dict>
-    </plist>
-    ```
-
-2. Start with `launchctl load ~/Library/LaunchAgents/homebrew.update-notifier.plist`. (You can halt the process by using _unload_ as launchctl command).
-
+1. Copy the example launch agent file into your user library: `cp opt/homebrew.update-notifier.plist ~/Library/LaunchAgents/homebrew.update-notifier.plist`
+2. Modify the starting times and and other settings to your flavour
+3. Start with `launchctl load ~/Library/LaunchAgents/homebrew.update-notifier.plist`. (You can halt the process by using _unload_ as launchctl command).
 
 ## Credits
 
