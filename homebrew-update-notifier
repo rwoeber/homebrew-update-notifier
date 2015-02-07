@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# Notify of Homebrew updates via Notification Center on Mac OS X
+#
+# Author: Richard Woeber
+# based on the work of Chris Streeter http://www.chrisstreeter.com
+
+eval `/usr/libexec/path_helper -s`
+
+BREW='/usr/local/bin/brew'
+TERMINAL_NOTIFIER=$(which terminal-notifier)
+NOTIFIER_ARGS='-sender com.apple.Terminal'
+
+
+${BREW} update 2>&1 > /dev/null
+
+if [ -e ${TERMINAL_NOTIFIER} ]; then
+    outdated=$(${BREW} outdated --quiet)
+    pinned=$(${BREW} list --pinned)
+
+    # Remove pinned formulae from the list of outdated formulae
+    outdated=$(comm -1 -3 <(echo "${pinned}") <(echo "${outdated}"))
+    
+    if [ -n "${outdated}" ]; then
+        # We've got outdated formulas
+        
+        # join lines together with ", "
+        outdated=$(echo ${outdated} |xargs -I {} echo {}, | xargs echo | sed 's/,$//')
+
+        title="Homebrew updated"
+        message=$(printf "The following formulae are outdated:\n${outdated}")
+    fi
+
+    ${TERMINAL_NOTIFIER} ${NOTIFIER} -title "${title}" -message "${message}"
+fi
