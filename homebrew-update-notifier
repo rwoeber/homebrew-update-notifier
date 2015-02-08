@@ -20,10 +20,10 @@ if [ -e ${TERMINAL_NOTIFIER} ]; then
 
     # Remove pinned formulae from the list of outdated formulae
     outdated=$(comm -1 -3 <(echo "${pinned}") <(echo "${outdated}"))
-    
+
     if [ -n "${outdated}" ]; then
         # We've got outdated formulas
-        
+
         # join lines together with ", "
         outdated=$(echo ${outdated} |xargs -I {} echo {}, | xargs echo | sed 's/,$//')
 

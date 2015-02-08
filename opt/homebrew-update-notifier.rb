@@ -9,7 +9,7 @@ depends_on "terminal-notifier"
   def install
     bin.install "homebrew-update-notifier"
   end
-  
+
   def plist; <<-EOS.undent
       <?xml version="1.0" encoding="UTF-8"?>
       <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -48,7 +48,5 @@ depends_on "terminal-notifier"
         </dict>
       </plist>
       EOS
-    end
-
-
+  end
 end
