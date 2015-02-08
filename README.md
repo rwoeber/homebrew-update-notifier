@@ -4,7 +4,22 @@ A little script to announce outdated [Homebrew](http://brew.sh/) formulas in the
 
 ## Installation
 
-**Prerequisites**:
+```bash
+brew install https://raw.githubusercontent.com/rwoeber/homebrew-update-notifier/master/opt/homebrew-update-notifier.rb
+```
+
+The script doesn’t make much sense without some automation. As noted in the brew installer output, link and activate the launchd-entry. This will fire the script at login, at 10:00 and at 15:00. (If you want to change this, consider a [manual install](#user-content-manual-installation).
+
+~~~bash
+ln -sfv /usr/local/opt/homebrew-update-notifier/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.homebrew-update-notifier.plist
+~~~
+
+## Manual Installation
+
+Updates are checked at login, 10:00 and 15:00. If you want to have the script run at other times, consider to manually install everything.
+
+### Prerequisites
 
 - [Homebrew](http://brew.sh/), of course.
 - [terminal-notifier](https://github.com/alloy/terminal-notifier) is for sending the results of the script to the Notification Center.
@@ -12,9 +27,9 @@ Install with `brew install terminal-notifier`.
 
 Download the script and place it in your environment path (how about `/usr/local/bin`?) and give it executable rights: `chmod +x /usr/local/bin/homebrew-update-notifier`.
 
-## Usage/Automation
+### Automation
 
-This script doesn’t make much sense without some automation. The easiest way is to fire it from a [launchd](http://alvinalexander.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs) entry.
+[Here](http://alvinalexander.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs) is a little overview on writing launchd-entries.
 
 1. Copy the example launch agent file into your user library: `cp opt/homebrew.update-notifier.plist ~/Library/LaunchAgents/homebrew.update-notifier.plist`
 2. Modify the starting times and and other settings to your flavour
