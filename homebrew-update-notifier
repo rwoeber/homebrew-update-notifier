@@ -24,8 +24,8 @@ if [ -e ${TERMINAL_NOTIFIER} ]; then
     if [ -n "${outdated}" ]; then
         # We've got outdated formulas
 
-        # join lines together with ", "
-        outdated=$(echo ${outdated} |xargs -I {} echo {}, | xargs echo | sed 's/,$//')
+        # join lines together with ", " and remove possible trailing comma character
+        outdated=$(perl -pe 's/\n/,/g' <(echo "${outdated}") | sed 's/,$//g')
 
         title="Homebrew updated"
         message=$(printf "The following formulae are outdated:\n${outdated}")
