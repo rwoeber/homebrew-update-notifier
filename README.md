@@ -39,6 +39,10 @@ Download the script and place it in your environment path (how about `/usr/local
 
 Based on the similar scripts from [Chris Streeter](http://chrisstreeter.com) and [Simon Schick](http://www.simonsimcity.net).
 
+## Version
+
+1.0.1
+
 ## License
 
 This is free and unencumbered software released into the public domain.
