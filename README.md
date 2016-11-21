@@ -10,10 +10,10 @@ brew install https://raw.githubusercontent.com/rwoeber/homebrew-update-notifier/
 
 The script doesn’t make much sense without some automation. As noted in the brew installer output, link and activate the launchd-entry. This will fire the script at login, at 10:00 and at 15:00. (If you want to change this, consider a [manual install](#user-content-manual-installation).
 
-~~~bash
+```bash
 ln -sfv /usr/local/opt/homebrew-update-notifier/*.plist ~/Library/LaunchAgents
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.homebrew-update-notifier.plist
-~~~
+```
 
 ## Manual Installation
 
@@ -41,7 +41,7 @@ Based on the similar scripts from [Chris Streeter](http://chrisstreeter.com) and
 
 ## Version
 
-1.0.1
+1.0.2
 
 ## License
 
