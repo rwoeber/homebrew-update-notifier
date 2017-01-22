@@ -4,7 +4,7 @@ class HomebrewUpdateNotifier < Formula
   version "1.0.2"
   sha256 "e4620877dfa24ed02f8fda9afe51c22a9d2e4be59e4e0e5dddeba85f78c5f7f0"
 
-depends_on "terminal-notifier"
+  depends_on "terminal-notifier"
 
   def install
     bin.install "homebrew-update-notifier"
