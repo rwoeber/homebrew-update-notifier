@@ -5,10 +5,11 @@ A little script to announce outdated [Homebrew](http://brew.sh/) formulas in the
 ## Installation
 
 ```bash
-brew install https://raw.githubusercontent.com/rwoeber/homebrew-update-notifier/master/opt/homebrew-update-notifier.rb
+brew install frdmn/formulas/homebrew-update-notifier
+brew services start homebrew-update-notifier
 ```
 
-The script doesn’t make much sense without some automation. As noted in the brew installer output, link and activate the launchd-entry. This will fire the script at login, at 10:00 and at 15:00. (If you want to change this, consider a [manual install](#user-content-manual-installation).
+To automate the execution we can use Homebrew's `service` subcommand to add it in our launchctl configuration. This will fire the script at login, at 10:00 and at 15:00. (If you want to change this, consider a [manual install](#user-content-manual-installation):
 
 ```bash
 ln -sfv /usr/local/opt/homebrew-update-notifier/*.plist ~/Library/LaunchAgents
