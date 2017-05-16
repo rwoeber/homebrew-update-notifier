@@ -1,5 +1,7 @@
 # OS&thinsp;X Homebrew Update Notifier
 
+![](http://i.imgur.com/fLKR6Pw.png)
+
 A little script to announce outdated [Homebrew](http://brew.sh/) formulas in the OS&thinsp;X Notification Center.
 
 ## Installation
