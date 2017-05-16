@@ -42,7 +42,7 @@ Based on the similar scripts from [Chris Streeter](http://chrisstreeter.com) and
 
 ## Version
 
-1.0.2
+1.0.3
 
 ## License
 
