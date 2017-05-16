@@ -7,7 +7,7 @@
 
 eval $(/usr/libexec/path_helper -s)
 
-BREW="/usr/local/bin/brew"
+BREW=$(which brew)
 TERMINAL_NOTIFIER=$(which terminal-notifier)
 NOTIFIER_ARGS="-sender com.apple.Terminal"
 
