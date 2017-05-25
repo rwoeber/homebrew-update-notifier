@@ -9,7 +9,6 @@ eval $(/usr/libexec/path_helper -s)
 
 BREW=$(which brew)
 TERMINAL_NOTIFIER=$(which terminal-notifier)
-NOTIFIER_ARGS="-sender com.apple.Terminal"
 
 ${BREW} update 2>&1 > /dev/null
 
