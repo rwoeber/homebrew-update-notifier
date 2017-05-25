@@ -36,6 +36,21 @@ if [ -e ${TERMINAL_NOTIFIER} ]; then
         exit
     fi
 
+    # Store outdated casks in variable
+    outdated=$(${BREW} cask outdated)
+
+    echo "$outdated"
+
+    # Check if not empty
+    if [ -n "${outdated}" ]; then
+        # join lines together with ", " and remove possible trailing comma character
+        outdated=$(perl -pe 's/\n/, /g' <(echo "${outdated}") | sed 's/, $//g')
+
+        title="Outdated Casks"
+        message=$(printf "The following Casks are outdated:\n${outdated}")
+
+        ${TERMINAL_NOTIFIER} ${NOTIFIER} -title "${title}" -message "${message}"
+    fi
 fi
 
 exit 0
