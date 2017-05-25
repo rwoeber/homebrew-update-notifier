@@ -20,15 +20,22 @@ if [ -e ${TERMINAL_NOTIFIER} ]; then
     # Remove pinned formulae from the list of outdated formulae
     outdated=$(comm -1 -3 <(echo "${pinned}") <(echo "${outdated}"))
 
+    # Check if not empty
     if [ -n "${outdated}" ]; then
-        # We've got outdated formulas
-
         # join lines together with ", " and remove possible trailing comma character
         outdated=$(perl -pe 's/\n/, /g' <(echo "${outdated}") | sed 's/, $//g')
 
-        title="Homebrew updated"
+        title="Outdated Homebrew formulae"
         message=$(printf "The following formulae are outdated:\n${outdated}")
+
+        ${TERMINAL_NOTIFIER} ${NOTIFIER} -title "${title}" -message "${message}"
     fi
 
-    ${TERMINAL_NOTIFIER} ${NOTIFIER} -title "${title}" -message "${message}"
+    # Check if brew cask is installed
+    if ! brew cask &>/dev/null; then
+        exit
+    fi
+
 fi
+
+exit 0
